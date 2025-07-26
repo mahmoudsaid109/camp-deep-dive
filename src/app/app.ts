@@ -1,12 +1,16 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component } from '@angular/core';
+import { HeaderComponent } from "./header/header.component";
+import { ServerComponent } from "./dashboard/server-status/server.component";
+import { TrafficComponent } from "./dashboard/traffic/traffic.component";
+import { TicketsComponent } from "./dashboard/tickets/tickets.component";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  standalone: true,
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  imports: [HeaderComponent, ServerComponent, TrafficComponent, TicketsComponent],
 })
 export class App {
-  protected readonly title = signal('cmp-deep-dive');
+
+
 }
