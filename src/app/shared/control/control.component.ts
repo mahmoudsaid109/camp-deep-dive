@@ -1,7 +1,7 @@
 import {
   Component,
-  HostBinding,
-  HostListener,
+  ElementRef,
+  inject,
   input,
   OnInit,
   ViewEncapsulation,
@@ -16,7 +16,7 @@ import {
   host: {
     class: 'control',
     '(click)': 'onClick()',
-  }, 
+  },
 })
 export class ControlComponent {
   // @HostBinding('class') className = 'control';
@@ -24,7 +24,9 @@ export class ControlComponent {
   //   console.log('Control clicked');
   // }
   label = input.required<string>();
+  private le = inject(ElementRef);
   onClick() {
     console.log('Control clicked');
+    console.log(this.le);
   }
 }
