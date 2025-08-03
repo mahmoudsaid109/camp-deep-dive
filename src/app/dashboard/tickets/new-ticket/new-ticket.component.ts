@@ -1,13 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { ButtonComponent } from '../../../shared/buuton/button.component';
 import { ControlComponent } from "../../../shared/control/control.component";
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-new-ticket',
-  imports: [ButtonComponent, ControlComponent],
+  imports: [ButtonComponent, ControlComponent, FormsModule],
   templateUrl: './new-ticket.component.html',
   styleUrls: ['./new-ticket.component.css'],
 })
 export class NewTicketComponent {
-  
+  onSubmit(title: string, ticketText: string) {
+    console.log(title, ticketText);
+  }
+
 }
