@@ -1,4 +1,4 @@
-import { Component, ElementRef, viewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, viewChild } from '@angular/core';
 import { ButtonComponent } from '../../../shared/buuton/button.component';
 import { ControlComponent } from "../../../shared/control/control.component";
 import { FormsModule } from '@angular/forms';
@@ -9,9 +9,17 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './new-ticket.component.html',
   styleUrls: ['./new-ticket.component.css'],
 })
-export class NewTicketComponent {
+export class NewTicketComponent implements OnInit, AfterViewInit {
   // @ViewChild('form') private form?: ElementRef<HTMLFormElement>;
   private form = viewChild.required<ElementRef<HTMLFormElement>>('form');
+  ngOnInit() {
+    console.log('OnInit');
+    console.log(this.form);
+  }
+  ngAfterViewInit() {
+    console.log('AfterViewInit');
+    console.log(this.form);
+  }
   onSubmit(title: string, ticketText: string) {
     console.log(title, ticketText);
     //native element is an object of elementRef allow to access value from form
@@ -20,3 +28,12 @@ export class NewTicketComponent {
   }
 
 }
+
+/*
+in case @ViewChild('form') private form?: ElementRef<HTMLFormElement> =>
+ you can access content only afterViewInit.
+
+but in case viewChild.required<ElementRef<HTMLFormElement>>('form') =>
+ you can access content in ngOnInit and afterViewInit.
+
+*/
