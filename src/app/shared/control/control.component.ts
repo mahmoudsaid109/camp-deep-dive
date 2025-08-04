@@ -1,11 +1,9 @@
 import {
   Component,
   contentChild,
-  ContentChild,
   ElementRef,
   inject,
   input,
-  OnInit,
   ViewEncapsulation,
 } from '@angular/core';
 

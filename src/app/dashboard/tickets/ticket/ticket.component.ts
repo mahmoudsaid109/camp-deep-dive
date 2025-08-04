@@ -1,15 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, input, OnInit, signal } from '@angular/core';
+import { Ticket } from '../ticket.model';
 
 @Component({
   selector: 'app-ticket',
   templateUrl: './ticket.component.html',
   styleUrls: ['./ticket.component.css']
 })
-export class TicketComponent implements OnInit {
+export class TicketComponent {
+  data = input.required<Ticket>();
 
-  constructor() { }
+  detailsVisible = signal(false);
 
-  ngOnInit() {
+  onToggleDetails() {
+    this.detailsVisible.set(!this.detailsVisible());
   }
+
 
 }
